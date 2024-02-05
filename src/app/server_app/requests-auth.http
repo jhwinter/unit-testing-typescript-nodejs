@@ -1,0 +1,21 @@
+POST http://localhost:8080/register/
+Content-Type: application/json
+
+{
+    "userName": "user1",
+    "password": "pass"
+}
+###
+
+POST http://localhost:8080/login/
+Content-Type: application/json
+
+{
+    "userName": "user1",
+    "password": "pass"
+}
+> {%
+client.global.set("token", response.body.token);
+client.log(JSON.stringify(response.body));
+%}
+###

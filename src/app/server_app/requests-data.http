@@ -1,0 +1,37 @@
+POST http://localhost:8080/reservation
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "user": "user1",
+    "startDate": "startDate",
+    "endDate":"endDate",
+    "room": "someRoom"
+}
+> {%
+client.global.set("reservationId", response.body.reservationId);
+client.log(JSON.stringify(response.body));
+%}
+###
+
+# reservationId = 30a1086ef4193f128c81
+#< {% client.global.set("reservationId", "e1533043a68d2ca66fc1"); %}
+GET http://localhost:8080/reservation/{{reservationId}}
+Authorization: {{token}}
+###
+
+GET http://localhost:8080/reservation/all
+Authorization: {{token}}
+###
+
+# reservationId = 0a581df56ea95a2fad52
+PUT http://localhost:8080/reservation/{{reservationId}}
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "room": "someOtherRoom",
+    "user": "user2"
+
+}
+###
