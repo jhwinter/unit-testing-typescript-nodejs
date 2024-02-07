@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-test-runner",
+  "version": "1.0.0",
+  "description": "https://www.udemy.com/course/unit-testing-typescript-nodejs/",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test --require ts-node/register src/utils.test.*",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

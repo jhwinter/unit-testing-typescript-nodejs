@@ -20,7 +20,7 @@ export class SessionTokenDataAccess {
   }
 
   public async isValidToken(tokenId: string) {
-    console.log(`Quering for ${tokenId} into the database`);
+    console.log(`Querying for ${tokenId} into the database`);
     const sessionToken = await this.sessionTokensDataBase.getBy("id", tokenId);
     if (sessionToken) {
       return sessionToken.valid;

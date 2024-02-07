@@ -48,6 +48,8 @@ Principles, not rules, that we may follow when writing tests:
   - Large values
   - 100% code coverage - not a great indicator
 
+---
+
 ## Jest aliases and watch mode
 
 ### test properties
@@ -75,6 +77,8 @@ How to enable watch mode: `jest --watch`
 ### coverage
 
 [Ignoring code for coverage purposes](https://github.com/gotwarlost/istanbul/blob/bc84c315271a5dd4d39bcefc5925cfb61a3d174a/ignoring-code-for-coverage.md)
+
+---
 
 ## Test Driven Development
 
@@ -124,3 +128,78 @@ How to enable watch mode: `jest --watch`
   - This answers the question of why some code behaves the way it behaves, it's because it's a requirement.
   - If this is required, then the tests should reflect that requirement.
   - If our units are requirements, then our tests will be very powerful.
+
+---
+
+## What are the advantages of a heavy mock approach?
+
+- Test classes in isolation
+- Impose a strict coding style
+  - Example: too many dependencies make the class hard to test
+- Once tests are in place, it is easy to create new tests
+
+## What are the disadvantages of a heavy mock approach?
+
+- Tests and implementation are tightly coupled
+  - Small change in implementation leads to many changes in tests
+- Hard to write
+  - In JS/TS, we don't have a mock generator library
+
+---
+
+## What are the advantages of a low mock approach?
+
+- Test more with less code
+- Easier to write and to read
+- Easier to maintain
+
+## What are the disadvantages of a heavy mock approach?
+
+- Hard to cover edge cases
+- Hard to setup in some cases:
+  - An ideal workflow was presented in the course
+  - Instead of DB mock, we may have a docker container
+  - Other services may have to be dockerized
+  - CI/CD point of view: a lot more configuration is required
+
+---
+
+## Integration Tests
+
+### Understanding integration tests
+
+- Test the system as close as possible to the real deployment
+- Testing stage - identical to the production stage
+  - Run it locally or remotely
+- How we will test our system:
+  - Launch the app
+  - Use it as a normal user
+  - Make assertions based on the resources
+
+--- 
+
+## Snapshot testing
+
+- test large objects
+- test UI components, generated logic (JSON)
+
+---
+
+## Testing frameworks comparison
+
+- Jest is an all-in-one library
+  - test runner
+  - mock
+  - assert
+- Mocha is a test runner
+  - mock: SinonJs
+  - assert: Chai
+- Jest advantages
+  - one library
+  - easy TS integration
+  - popular (better support)
+  - test UI features (React)
+- Mocha advantages
+  - more complex features
+  - `when(certainCall).thenReturn(certainResult)`
+    - this can be replicated in Jest, but Mocha's solution is a bit more elegant
